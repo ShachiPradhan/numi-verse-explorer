@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -84,6 +83,78 @@ const FormulaExplorer = () => {
         "This gives you a more accurate result!"
       ],
       funFact: "Named after Thomas Simpson, who definitely knew how to party with parabolas! 🎉"
+    },
+    {
+      id: 5,
+      name: "Taylor Series Method",
+      category: "ODE Solutions",
+      difficulty: "Advanced",
+      formula: "y(x₀+h) ≈ y₀ + hy₀' + (h²/2!)y₀'' + (h³/3!)y₀''' + ...",
+      description: "Solve ODEs using Taylor series expansion",
+      analogy: "Like predicting the future by studying the pattern of change and its changes! 🔮",
+      visualization: "Building a polynomial approximation using derivatives at a point",
+      steps: [
+        "Calculate y'₀ = f(x₀, y₀) from the ODE",
+        "Find higher derivatives y''₀, y'''₀, etc.",
+        "Apply Taylor series formula",
+        "Truncate at desired order",
+        "Use result as starting point for next step"
+      ],
+      funFact: "Taylor series can predict rocket trajectories - talk about aiming for the stars! 🚀"
+    },
+    {
+      id: 6,
+      name: "Modified Euler's Method",
+      category: "ODE Solutions",
+      difficulty: "Intermediate",
+      formula: "y_{n+1} = y_n + h·f(x_n + h/2, y_n + (h/2)f(x_n, y_n))",
+      description: "Improved Euler method using midpoint evaluation",
+      analogy: "Like taking a practice shot before the real one - check the middle first! 🎯",
+      visualization: "Using the slope at the midpoint to get a better approximation",
+      steps: [
+        "Calculate k₁ = f(xₙ, yₙ)",
+        "Find midpoint: y_mid = yₙ + (h/2)k₁",
+        "Calculate k₂ = f(xₙ + h/2, y_mid)",
+        "Update: y_{n+1} = yₙ + h·k₂",
+        "Move to next point: xₙ₊₁ = xₙ + h"
+      ],
+      funFact: "Also called the midpoint method - because sometimes the middle ground is the best! ⚖️"
+    },
+    {
+      id: 7,
+      name: "Runge-Kutta 4th Order",
+      category: "ODE Solutions",
+      difficulty: "Advanced",
+      formula: "y_{n+1} = y_n + (h/6)(k₁ + 2k₂ + 2k₃ + k₄)",
+      description: "High-accuracy ODE solver using weighted average of slopes",
+      analogy: "Like asking 4 different GPS apps and taking the weighted average of their routes! 📱",
+      visualization: "Sampling slopes at 4 strategic points and combining them intelligently",
+      steps: [
+        "k₁ = hf(xₙ, yₙ)",
+        "k₂ = hf(xₙ + h/2, yₙ + k₁/2)",
+        "k₃ = hf(xₙ + h/2, yₙ + k₂/2)",
+        "k₄ = hf(xₙ + h, yₙ + k₃)",
+        "y_{n+1} = yₙ + (k₁ + 2k₂ + 2k₃ + k₄)/6"
+      ],
+      funFact: "RK4 is so accurate, NASA uses it to land rovers on Mars! 🛸"
+    },
+    {
+      id: 8,
+      name: "Milne's Predictor-Corrector",
+      category: "ODE Solutions",
+      difficulty: "Expert",
+      formula: "Predictor: y_{n+1} = y_{n-3} + (4h/3)(2f_n - f_{n-1} + 2f_{n-2})",
+      description: "Two-step method combining prediction and correction",
+      analogy: "Like a weather forecast: first predict, then check reality and correct! 🌦️",
+      visualization: "Using past points to predict, then refining with current information",
+      steps: [
+        "Use predictor formula with 4 previous points",
+        "Calculate f_{n+1} with predicted value",
+        "Apply corrector: y_{n+1} = y_{n-1} + (h/3)(f_{n+1} + 4f_n + f_{n-1})",
+        "Iterate corrector until convergence",
+        "Move to next step"
+      ],
+      funFact: "Named after Edward Milne, who loved the predict-then-correct approach to life! 🎭"
     }
   ];
 
@@ -97,6 +168,7 @@ const FormulaExplorer = () => {
     Beginner: 'bg-green-500/20 text-green-300 border-green-500/30',
     Intermediate: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
     Advanced: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
+    Expert: 'bg-red-500/20 text-red-300 border-red-500/30',
   };
 
   return (
@@ -108,7 +180,7 @@ const FormulaExplorer = () => {
         <div className="relative max-w-md mx-auto">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
           <Input
-            placeholder="Search formulas (e.g., 'bisection', 'integration')..."
+            placeholder="Search formulas (e.g., 'ODE', 'runge-kutta', 'taylor')..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10 bg-white/10 backdrop-blur-md border-white/20 text-white placeholder-gray-400"
@@ -219,7 +291,7 @@ const FormulaExplorer = () => {
         <div className="text-center py-12">
           <div className="text-6xl mb-4">🔍</div>
           <p className="text-xl text-gray-400">No formulas found matching "{searchQuery}"</p>
-          <p className="text-gray-500 mt-2">Try searching for "bisection", "newton", or "integration"</p>
+          <p className="text-gray-500 mt-2">Try searching for "ODE", "taylor", "runge-kutta", or "milne"</p>
         </div>
       )}
     </div>
