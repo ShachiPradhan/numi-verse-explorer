@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,6 +9,7 @@ import { BookOpen, Calculator, Trophy, Target, Zap, Star, Search, ArrowRight, Sp
 import LevelCard from '@/components/LevelCard';
 import FormulaExplorer from '@/components/FormulaExplorer';
 import SolverInterface from '@/components/SolverInterface';
+import NumericalMethodsPopup from '@/components/NumericalMethodsPopup';
 import { toast } from '@/hooks/use-toast';
 
 const Index = () => {
@@ -126,6 +126,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+      {/* Add the popup component */}
+      <NumericalMethodsPopup />
+      
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
