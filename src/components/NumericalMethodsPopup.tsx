@@ -17,7 +17,7 @@ const numericalMethodsPopups: PopupData[] = [
   {
     id: '1',
     type: 'meme',
-    title: 'When Newton's Method Works',
+    title: 'When Newton\'s Method Works',
     content: "Newton's Method be like: 'I am inevitable!' *snaps fingers and finds the root instantly* 🫰",
     emoji: '⚡',
     color: 'from-yellow-500 to-orange-500'
